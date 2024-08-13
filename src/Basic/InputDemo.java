@@ -7,9 +7,14 @@ public class InputDemo {
     // 8월 13일
     // 키보드로부터 받을거야 System.in
     Scanner in = new Scanner(System.in);
-    System.out.println("정수형 숫자 하나를 입력하셈");
-    String s = in.nextLine();
-    int num = Integer.parseInt(s);
-    System.out.printf("당신이 입력한 숫자는 %d 이고 100을 더한 결과는 %d입니다", num, num + 100);
+//    System.out.println("정수형 숫자 하나를 입력하셈");
+//    String s = in.nextLine();
+//    int num = Integer.parseInt(s);
+//    System.out.printf("당신이 입력한 숫자는 %d 이고 100을 더한 결과는 %d입니다", num, num + 100);
+
+    System.out.println("정수형 숫자를 두개 입력하세용");
+    int x = in.nextInt();
+    int y = in.nextInt();
+    System.out.printf("당신이 입력한 숫자는 %d, %d, 곱한 결과는 %d입니다", x, y, x * y);
   }
 }
