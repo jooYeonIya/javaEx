@@ -16,7 +16,7 @@ public class MultiIf {
 //        grage = "A";
 //      }
       grage = (score >= 95) ? "A+" : "A";
-      
+
     } else if (score >= 80) {
       grage = "B";
     } else if (score >= 70) {
