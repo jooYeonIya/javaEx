@@ -4,7 +4,7 @@ class Circle {
   // 8월 16일
 
   // 필드 - 캡슐화 시키기 전
-  int radius;
+  int radius = 1;
   private int radius2;
 
   // 생성자
