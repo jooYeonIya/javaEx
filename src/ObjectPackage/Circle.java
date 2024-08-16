@@ -9,9 +9,16 @@ class Circle {
 
   // 생성자
   // 생성자 코드가 없을 경우 컴파일러가 기본생성자를 자동으로 생성
-//  public Circle(int radius) {
-//    this.radius = radius;
-//  }
+  // 기본값을 주고 싶을 때는 이렇게 하면 됨
+  public  Circle() {
+    this.radius = 10;
+  }
+
+  // 물론 파라미터로 넘겨주는 것도 가능
+  // 즉 생성자도 오버로딩 가능
+  public Circle(int radius) {
+    this.radius = radius;
+  }
 
   // 메서드
   // 인스턴스를 생성해야 호출할 수 있는 메서드
