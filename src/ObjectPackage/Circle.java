@@ -5,7 +5,7 @@ class Circle {
 
   // 필드 - 캡슐화 시키기 전
   int radius = 1;
-  private int radius2;
+  private int radius2 = 1;
 
   // 생성자
   // 생성자 코드가 없을 경우 컴파일러가 기본생성자를 자동으로 생성
