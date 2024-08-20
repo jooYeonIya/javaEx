@@ -10,8 +10,8 @@ public class CircleArrayDemo {
     circles[1] = new Circle(4);;
 
     for (Circle circle : circles) {
-      if (circle != null) System.out.println(circle.getArea());
-      
-
+//      if (circle != null) System.out.println(circle.getArea());
+    if (circle != null) System.out.println(circle.toString());
+    }
   }
 }

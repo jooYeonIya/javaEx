@@ -45,4 +45,18 @@ class Circle {
     }
     this.radius2 = radius2;
   }
+
+  @Override
+  public String toString() {
+    return "원의 반지름은 " + radius + "이고 넓이가 " + getArea() + "인 원입니다";
+  }
+
+  // 자동 생성 가능
+//  @Override
+//  public String toString() {
+//    return "Circle{" +
+//        "radius=" + radius +
+//        ", radius2=" + radius2 +
+//        '}';
+//  }
 }
