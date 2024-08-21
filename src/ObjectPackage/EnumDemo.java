@@ -7,16 +7,17 @@ public class EnumDemo {
 //      System.out.println("달라 달라");
 //    }
 
-  Day dayOfWeek = Day.FRI;
+    Day dayOfWeek = Day.FRI;
 
-  switch (dayOfWeek) {
-    case MON -> System.out.println("월");
-    case TUE -> System.out.println("화");
-    case WED -> System.out.println("수");
-    case THU -> System.out.println("목");
-    case FRI -> System.out.println("금");
-    case SAT -> System.out.println("토");
-    case SUN -> System.out.println("일");
+    switch (dayOfWeek) {
+      case MON -> System.out.println("월");
+      case TUE -> System.out.println("화");
+      case WED -> System.out.println("수");
+      case THU -> System.out.println("목");
+      case FRI -> System.out.println("금");
+      case SAT -> System.out.println("토");
+      case SUN -> System.out.println("일");
+    }
   }
 }
 
