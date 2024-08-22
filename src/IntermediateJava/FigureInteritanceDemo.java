@@ -42,11 +42,11 @@ class RectAngle extends Figure {
 class Triangle extends Figure {
   private int poly = 3;
   private int height;
-  private int widht;
+  private int width;
 
   public Triangle(int height, int widht) {
     this.height = height;
-    this.widht = widht;
+    this.width = widht;
   }
 
   public Triangle(int poly) {
@@ -55,6 +55,17 @@ class Triangle extends Figure {
 
   @Override
   public double getArea() {
-    return (widht * height) / 2.0;
+    return (width * height) / 2.0;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+
+    if (obj instanceof Triangle) {
+      Triangle t = (Triangle) obj;
+      return this.getArea() == t.getArea();
+    }
+
+    return false;
   }
 }
