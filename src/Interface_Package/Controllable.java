@@ -1,6 +1,12 @@
 package Interface_Package;
 
+/**
+ * 장비를 켜고 끄는 기능을 구현
+ * 수리와 초기화 기능 구현
+ */
+
 public interface Controllable {
+
   void turnOn();
   void trunOff();
 
