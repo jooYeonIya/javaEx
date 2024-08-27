@@ -1,4 +1,4 @@
-package advancedJava;
+package exercise_ch09;
 
 public class BoxTest {
   public static void main(String[] args) {

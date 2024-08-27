@@ -1,4 +1,4 @@
-package advancedJava;
+package exercise_ch09;
 
 public class TicketTest {
   // 티켓의 가격으로 크고 작음을 비교해야 한다
