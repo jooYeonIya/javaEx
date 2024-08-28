@@ -19,5 +19,11 @@ public class ListDemo2 {
     integers.add(1, 100);
     System.out.println(integers);
 
+    // 람다로 구현
+    integers.forEach(s -> System.out.println(s + "Asdf"));
+
+    integers.removeIf(i -> i % 2 == 0);
+
+    System.out.println(integers);
   }
 }
