@@ -9,9 +9,9 @@ import java.net.Socket;
 public class Echo2Server extends Thread{
   protected static boolean cont = true;
   protected Socket conntection = null;
+  static ServerSocket server = null;
 
   public static void main(String[] args) throws IOException {
-    ServerSocket server = null;
     server = new ServerSocket(5000);
     System.out.println("서버 소켓 생성");
 
@@ -33,9 +33,11 @@ public class Echo2Server extends Thread{
     System.out.println("클라이언트와 통신을 위한 새로운 스레드 생성");
     try {
       in = new BufferedReader(new InputStreamReader(conntection.getInputStream()));
+
       String msg;
 
       while ((msg = in.readLine()) != null) {
+        System.out.println(conntection.getInetAddress());
         System.out.println("읽은 메시지 메아리 : " + msg);
       }
 
