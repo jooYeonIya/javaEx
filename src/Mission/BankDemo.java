@@ -27,7 +27,9 @@ public class BankDemo {
         case 3:
           withdraw();
           break;
-
+        case 4:
+          balanceInquiry();
+          break;
       }
     }
   }
@@ -112,7 +114,7 @@ public class BankDemo {
 
     Customer customer = Customer.customerMap.get(account.customer.customerNumber);
 
-    long deposit = Account.withdraw(accountNumber, customer.customerNumber, password, (long) money);
+    long withdraw = Account.withdraw(accountNumber, customer.customerNumber, password, (long) money);
 
     // 고객 정보 업데이트
     Customer.setLastTransactionDate(account.customer.customerNumber);
@@ -131,6 +133,20 @@ public class BankDemo {
     Transaction.transactionMap.put(transaction.seqNo, transaction);
     System.out.println(Transaction.transactionMap.get(transaction.seqNo).toString());
 
-    System.out.println("출금 후 잔액" + deposit + "원");
+    System.out.println("출금 후 잔액" + withdraw + "원");
+  }
+
+  public static void balanceInquiry() {
+    System.out.println("계좌 번호 입력");
+    String accountNumber = in.nextLine();
+
+    System.out.println("비밀번호 입력");
+    String password = in.nextLine();
+
+    Account account = Account.accountMap.get(accountNumber);
+
+    long balance = Account.balanceInquiry(accountNumber, account.customer.customerNumber, password);
+
+    System.out.println("잔액 " + balance);
   }
 }
