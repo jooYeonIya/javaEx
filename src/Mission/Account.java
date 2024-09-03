@@ -70,6 +70,7 @@ public class Account {
     if (account != null) {
       account.balance = 0;
       account.accountColoseDate = LocalDate.now();
+      account.isDormantt = true;
     }
   }
 
