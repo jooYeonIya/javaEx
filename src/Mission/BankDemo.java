@@ -12,7 +12,7 @@ public class BankDemo {
 
   public static void main(String[] args) {
     while (true) {
-      System.out.println("1 계좌 생성 / 2 입금 / 3 출금 / 4 잔액 조회 / 5 종료");
+      System.out.println("1 계좌 생성 / 2 입금 / 3 출금 / 4 잔액 조회 / 5 계좌 생성 / 6 종료");
 
       int option = in.nextInt();
       in.nextLine();
@@ -30,6 +30,10 @@ public class BankDemo {
         case 4:
           balanceInquiry();
           break;
+        case 5:
+          deleteAccount();
+          break;
+
       }
     }
   }
@@ -148,5 +152,30 @@ public class BankDemo {
     long balance = Account.balanceInquiry(accountNumber, account.customer.customerNumber, password);
 
     System.out.println("잔액 " + balance);
+  }
+
+  public static void deleteAccount() {
+    System.out.println("계좌 번호 입력");
+    String accountNumber = in.nextLine();
+
+    System.out.println("비밀번호 입력");
+    String password = in.nextLine();
+
+    Account account = Account.accountMap.get(accountNumber);
+    Account.deleteAccount(accountNumber, account.customer.customerNumber, password);
+
+    // 입출금 거래 내역 업데이트
+    Customer customer = Customer.customerMap.get(account.customer.customerNumber);
+    Banker banker = new Banker(BankCode.HANA, "123456", "뱅커");
+
+    Transaction transaction = new Transaction(TransactionType.DELETE,
+        TransactionStatus.NORMAL,
+        0,
+        customer,
+        banker
+    );
+
+    Transaction.transactionMap.put(transaction.seqNo, transaction);
+    System.out.println(Transaction.transactionMap.get(transaction.seqNo).toString());
   }
 }

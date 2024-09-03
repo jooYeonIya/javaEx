@@ -62,13 +62,14 @@ public class Account {
   }
 
   // 계좌 삭제
-  // 더이상 거래를 원하지 않으면 계좌를 없앨 수 있다. 이 때 잔액이 남아있으면 모두 출금처리후 삭제처리한다.
+  // 더이상 거래를 원하지 않으면 계좌를 없앨 수 있다. 이 때 잔액이 남아있으면 모두 출금처리 후 삭제처리한다.
   // (계좌번호,고객번호,비밀번호 일치확인 필요)
-  public void deleteAccount(String accountNumber, String customerNumber, String password) {
+  public static void deleteAccount(String accountNumber, String customerNumber, String password) {
     Account account = accountInquiry(accountNumber, customerNumber, password);
 
     if (account != null) {
-      accountMap.remove(accountNumber);
+      account.balance = 0;
+      account.accountColoseDate = LocalDate.now();
     }
   }
 
