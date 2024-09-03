@@ -39,6 +39,7 @@ public class Customer {
   public static void setLastTransactionDate(String customerNumber) {
     Customer customer = customerInquiry(customerNumber);
     customer.lastTransactionDate = LocalDate.now();
+    System.out.println(Customer.customerMap.get(customerNumber).toString());
   }
 
   @Override

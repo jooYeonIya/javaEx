@@ -33,6 +33,11 @@ public class Transaction {
     this.banker = banker;
   }
 
+  public static void update(Transaction transaction) {
+    Transaction.transactionMap.put(transaction.seqNo, transaction);
+    System.out.println(Transaction.transactionMap.get(transaction.seqNo).toString());
+  }
+
   @Override
   public String toString() {
     return "Transaction{" +

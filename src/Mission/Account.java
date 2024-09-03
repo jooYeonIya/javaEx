@@ -105,14 +105,12 @@ public class Account {
   public static void setLastTransactionDate(String customerNumber) {
     Customer customer = Customer.customerMap.get(customerNumber);
     Customer.setLastTransactionDate(customerNumber);
-    System.out.println(Customer.customerMap.get(customerNumber).toString());
   }
 
   public static void updateTransaction(TransactionType type, long money, Customer customer) {
     Banker banker = new Banker(BankCode.HANA, "123456", "뱅커");
     Transaction transaction = new Transaction(type, TransactionStatus.NORMAL, money, customer, banker);
-    Transaction.transactionMap.put(transaction.seqNo, transaction);
-    System.out.println(Transaction.transactionMap.get(transaction.seqNo).toString());
+    Transaction.update(transaction);
   }
 
   @Override
