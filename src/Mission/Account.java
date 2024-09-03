@@ -44,7 +44,7 @@ public class Account {
 
   // 입금
   // 해당 은행에 계좌가 있고, 계좌번호와 고객번호가 일치하면 입금을 할 수 있다.
-  public long deposit(String accountNumber, String customerNumber, String password, long money) {
+  public static long deposit(String accountNumber, String customerNumber, String password, long money) {
     Account account = accountInquiry(accountNumber, customerNumber, password);
 
     if (account != null) {
@@ -73,7 +73,7 @@ public class Account {
   }
 
   // 계좌 조회
-  public Account accountInquiry(String accountNumber, String customerNumber, String password) {
+  public static Account accountInquiry(String accountNumber, String customerNumber, String password) {
     Account account = accountMap.get(accountNumber);
 
     if (account != null) {

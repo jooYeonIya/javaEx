@@ -3,7 +3,6 @@ package Mission;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Customer {
   // 고객: 고객 번호 + 고객 객체
