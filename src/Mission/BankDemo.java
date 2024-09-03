@@ -100,7 +100,6 @@ public class BankDemo {
     Account.updateTransaction(TransactionType.CREATE, 0, account.customer);
   }
 
-
   public static void deposit() {
     System.out.println("계좌 번호 입력");
     String accountNumber = in.nextLine();
@@ -108,12 +107,11 @@ public class BankDemo {
     System.out.println("비밀번호 입력");
     String password = in.nextLine();
 
-    System.out.println("입금 금액 입력");
-    int money = in.nextInt();
+    long money = inputMoney();
 
     // 계좌 정보 업데이트
     Account account = Account.accountInquiry(accountNumber, password);
-    long deposit = Account.deposit(account, (long) money);
+    long deposit = Account.deposit(account, money);
 
     System.out.println("입금 후 잔액" + deposit + "원");
   }
@@ -125,8 +123,7 @@ public class BankDemo {
     System.out.println("비밀번호 입력");
     String password = in.nextLine();
 
-    System.out.println("출금 금액 입력");
-    int money = in.nextInt();
+    long money = inputMoney();
 
     // 계좌 정보 업데이트
     Account account = Account.accountInquiry(accountNumber, password);
@@ -159,5 +156,23 @@ public class BankDemo {
     // 계좌 정보 업데이트
     Account account = Account.accountInquiry(accountNumber, password);
     Account.deleteAccount(account);
+  }
+
+  public static long inputMoney() {
+    boolean valid = false;
+    long money = 0;
+
+    while (!valid) {
+      System.out.println("입금 금액 입력");
+      money = (long) in.nextInt();
+
+      if (money >= 0) {
+        valid = true;
+      } else {
+        System.out.println("0보다 큰 숫자를 입력해 주세요");
+      }
+    }
+
+    return money;
   }
 }
