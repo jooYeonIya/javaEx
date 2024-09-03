@@ -28,7 +28,7 @@ public class Account {
 
   // 출금
   // 해당 은행에 계좌가 있고, 계좌번호와 고객번호, 비밀번호가 일치하면 잔액 한도 내에서 출금을 할 수 있다.
-  public long withdraw(String accountNumber, String customerNumber, String password, long money) {
+  public static long withdraw(String accountNumber, String customerNumber, String password, long money) {
     Account account = accountInquiry(accountNumber, customerNumber, password);
 
     if (account != null) {

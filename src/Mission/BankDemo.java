@@ -24,6 +24,10 @@ public class BankDemo {
         case 2:
           deposit();
           break;
+        case 3:
+          withdraw();
+          break;
+
       }
     }
   }
@@ -91,5 +95,42 @@ public class BankDemo {
     System.out.println(Transaction.transactionMap.get(transaction.seqNo).toString());
 
     System.out.println("입금 후 잔액" + deposit + "원");
+  }
+
+  public static void withdraw() {
+    // 계좌 정보 업데이트
+    System.out.println("계좌 번호 입력");
+    String accountNumber = in.nextLine();
+
+    System.out.println("비밀번호 입력");
+    String password = in.nextLine();
+
+    System.out.println("출금 금액 입력");
+    int money = in.nextInt();
+
+    Account account = Account.accountMap.get(accountNumber);
+
+    Customer customer = Customer.customerMap.get(account.customer.customerNumber);
+
+    long deposit = Account.withdraw(accountNumber, customer.customerNumber, password, (long) money);
+
+    // 고객 정보 업데이트
+    Customer.setLastTransactionDate(account.customer.customerNumber);
+    System.out.println(Customer.customerMap.get(account.customer.customerNumber).toString());
+
+    // 입출금 거래 내역 업데이트
+    Banker banker = new Banker(BankCode.HANA, "123456", "뱅커");
+
+    Transaction transaction = new Transaction(TransactionType.WITHDRAWAL,
+        TransactionStatus.NORMAL,
+        (long) money,
+        customer,
+        banker
+    );
+
+    Transaction.transactionMap.put(transaction.seqNo, transaction);
+    System.out.println(Transaction.transactionMap.get(transaction.seqNo).toString());
+
+    System.out.println("출금 후 잔액" + deposit + "원");
   }
 }
