@@ -23,7 +23,7 @@ public class Customer {
   //고객의 cru 는 거래가 있을때 같이 진행됨, 고객정보 삭제는 이번에는 고려대상이 아님
 
   // 고객 조회
-  public Customer customerInquiry(String customerNumber) {
+  public static Customer customerInquiry(String customerNumber) {
       Customer customer = customerMap.get(customerNumber);
 
     if (customer == null) {
@@ -34,7 +34,7 @@ public class Customer {
   }
 
   // 고객 거래 발생 시 업데이트
-  public void setLastTransactionDate(String customerNumber) {
+  public static void setLastTransactionDate(String customerNumber) {
     Customer customer = customerInquiry(customerNumber);
     customer.lastTransactionDate = LocalDate.now();
   }

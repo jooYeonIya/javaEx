@@ -57,6 +57,7 @@ public class BankDemo {
   }
 
   public static void deposit() {
+    // 계좌 정보 업데이트
     System.out.println("계좌 번호 입력");
     String accountNumber = in.nextLine();
 
@@ -68,7 +69,27 @@ public class BankDemo {
 
     Account account = Account.accountMap.get(accountNumber);
 
-    long deposit = Account.deposit(accountNumber, account.customer.customerNumber, password, (long) money);
+    Customer customer = Customer.customerMap.get(account.customer.customerNumber);
+
+    long deposit = Account.deposit(accountNumber, customer.customerNumber, password, (long) money);
+
+    // 고객 정보 업데이트
+    Customer.setLastTransactionDate(account.customer.customerNumber);
+    System.out.println(Customer.customerMap.get(account.customer.customerNumber).toString());
+
+    // 입출금 거래 내역 업데이트
+    Banker banker = new Banker(BankCode.HANA, "123456", "뱅커");
+
+    Transaction transaction = new Transaction(TransactionType.DEPOSIT,
+        TransactionStatus.NORMAL,
+        (long) money,
+        customer,
+        banker
+    );
+
+    Transaction.transactionMap.put(transaction.seqNo, transaction);
+    System.out.println(Transaction.transactionMap.get(transaction.seqNo).toString());
+
     System.out.println("입금 후 잔액" + deposit + "원");
   }
 }
