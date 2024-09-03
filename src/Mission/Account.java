@@ -78,6 +78,8 @@ public class Account {
   // (계좌번호,고객번호,비밀번호 일치확인 필요)
   public static void deleteAccount(Account account)  {
     if (account != null) {
+      updateTransaction(TransactionType.WITHDRAWAL, TransactionStatus.NORMAL, account.balance, account.customer);
+
       account.balance = 0;
       account.accountColoseDate = LocalDate.now();
       account.isDormantt = true;
