@@ -43,9 +43,24 @@ public class BankDemo {
     // 고객 생성
     Customer customer = new Customer(BankCode.HANA);
 
-    System.out.println("주민번호 앞자리 6자리 입력");
-    String number = in.nextLine();
-    customer.customerNumber = number;
+    boolean valid = false;
+    String number = null;
+
+    while (!valid) {
+      System.out.println("주민번호 앞자리 6자리 입력");
+      number = in.nextLine();
+
+      if (number.length() == 6) {
+        if (number.matches("\\d+")) {
+          customer.customerNumber = number;
+          valid = true;
+        } else {
+          System.out.println("숫자만 입력해 주세요.");
+        }
+      } else {
+        System.out.println("6자리 숫자를 입력해 주세요.");
+      }
+    }
 
     System.out.println("이름 입력");
     String name = in.nextLine();
@@ -59,9 +74,24 @@ public class BankDemo {
 
     Account account = new Account(customer, count);
 
-    System.out.println("비밀번호 입력해 주세요");
-    String password = in.nextLine();
-    account.password = password;
+    valid = false;
+    String password = null;
+
+    while (!valid) {
+      System.out.println("비밀번호 4자리 입력");
+      password = in.nextLine();
+
+      if (password.length() == 4) {
+        if (password.matches("\\d+")) {
+          account.password = password;
+          valid = true;
+        } else {
+          System.out.println("숫자만 입력해 주세요.");
+        }
+      } else {
+        System.out.println("4자리 숫자를 입력해 주세요.");
+      }
+    }
 
     Account.accountMap.put(account.accountNumber, account);
     System.out.println(Account.accountMap.get(account.accountNumber).toString());
