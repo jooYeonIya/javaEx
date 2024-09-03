@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Account {
   // 계좌: 계좌 번호 + 계좌 객체
-  public Map<String, Account> accountMap = new HashMap<>();
+  public static Map<String, Account> accountMap = new HashMap<>();
 
   Customer customer;
   String accountNumber;			    // 계좌번호 5자
@@ -17,12 +17,12 @@ public class Account {
   long balance;        			    // 잔고
 
   // 계좌 생성
-  public Account(Customer customer, String password, int accountCounter) {
+  public Account(Customer customer, int accountCounter) {
+    this.customer = customer;
     this.accountNumber = String.format("%05d", accountCounter);
     this.accountOpenDate = LocalDate.now();
     this.accountColoseDate = null;
     this.isDormantt = false;
-    this.password = password;
     this.balance = 0;
   }
 
@@ -86,5 +86,18 @@ public class Account {
     }
 
     return account;
+  }
+
+  @Override
+  public String toString() {
+    return "Account{" +
+        "customer=" + customer +
+        ", accountNumber='" + accountNumber + '\'' +
+        ", accountOpenDate=" + accountOpenDate +
+        ", accountColoseDate=" + accountColoseDate +
+        ", isDormantt=" + isDormantt +
+        ", password='" + password + '\'' +
+        ", balance=" + balance +
+        '}';
   }
 }

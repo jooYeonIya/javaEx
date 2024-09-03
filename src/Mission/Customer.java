@@ -3,10 +3,11 @@ package Mission;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Customer {
   // 고객: 고객 번호 + 고객 객체
-  public Map<String, Customer> customerMap = new HashMap<>();
+  public static Map<String, Customer> customerMap = new HashMap<>();
 
   BankCode bankCode;      		// 은행코드
   String customerNumber; 			// 고객번호 주민번호 앞자리 6자리
@@ -14,10 +15,8 @@ public class Customer {
   LocalDate firstTransactionDate; // 신규 거래 일자
   LocalDate lastTransactionDate; 	// 최종 거래 일자
 
-  public Customer(BankCode bankCode, String customerNumber, String name) {
+  public Customer(BankCode bankCode) {
     this.bankCode = bankCode;
-    this.customerNumber = customerNumber;
-    this.name = name;
     this.firstTransactionDate = LocalDate.now();
     this.lastTransactionDate = LocalDate.now();
   }
@@ -39,6 +38,17 @@ public class Customer {
   public void setLastTransactionDate(String customerNumber) {
     Customer customer = customerInquiry(customerNumber);
     customer.lastTransactionDate = LocalDate.now();
+  }
+
+  @Override
+  public String toString() {
+    return "Customer{" +
+        "bankCode=" + bankCode +
+        ", customerNumber='" + customerNumber + '\'' +
+        ", name='" + name + '\'' +
+        ", firstTransactionDate=" + firstTransactionDate +
+        ", lastTransactionDate=" + lastTransactionDate +
+        '}';
   }
 }
 
