@@ -116,7 +116,8 @@ public class BankDemo {
     Account account = Account.accountInquiry(accountNumber, password);
     long deposit = Account.deposit(account, money);
 
-    System.out.println("입금 후 잔액" + deposit + "원");
+    String message = (account == null) ? " " : "입금 후 잔액" + deposit + "원";
+    System.out.println(message);
   }
 
   public static void withdraw() {
@@ -132,7 +133,8 @@ public class BankDemo {
     Account account = Account.accountInquiry(accountNumber, password);
     long withdraw = Account.withdraw(account, money);
 
-    System.out.println("출금 후 잔액" + withdraw + "원");
+    String message = (account == null) ? " " : "출금 후 잔액" + withdraw + "원";
+    System.out.println(message);
   }
 
   public static void balanceInquiry() {
@@ -146,7 +148,8 @@ public class BankDemo {
     Account account = Account.accountInquiry(accountNumber, password);
     long balance = Account.balanceInquiry(account, password);
 
-    System.out.println("잔액 " + balance);
+    String message = (account == null) ? " " : "잔액" + balance + "원";
+    System.out.println(message);
   }
 
   public static void deleteAccount() {
