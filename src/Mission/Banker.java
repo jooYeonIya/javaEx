@@ -1,6 +1,12 @@
 package Mission;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Banker {
+  // 은행원: 직원 번호 + 은행원 객체
+  public Map<String, Banker> bankerMap = new HashMap<>();
+  
   BankCode bankCode;     	// 은행코드
   String bankerNumber;	// 직원번호
   String bankerName;  	// 직원명
