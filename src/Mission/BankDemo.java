@@ -1,6 +1,7 @@
 package Mission;
 
 import Mission.Enum.BankCode;
+import Mission.Enum.TransactionStatus;
 import Mission.Enum.TransactionType;
 
 import java.util.Scanner;
@@ -96,7 +97,7 @@ public class BankDemo {
     System.out.println(Account.accountMap.get(account.accountNumber).toString());
 
     // 내역 업데이트
-    Account.updateTransaction(TransactionType.CREATE, 0, account.customer);
+    Account.updateTransaction(TransactionType.CREATE, TransactionStatus.NORMAL, 0, account.customer);
   }
 
   public static void deposit() {

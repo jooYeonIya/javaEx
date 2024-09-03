@@ -37,9 +37,10 @@ public class Account {
       if (account.balance >= money) {
         account.balance -= money;
         setLastTransactionDate(account.customer.customerNumber);
-        updateTransaction(TransactionType.WITHDRAWAL, money, account.customer);
+        updateTransaction(TransactionType.WITHDRAWAL, TransactionStatus.NORMAL, money, account.customer);
         return account.balance;
       } else {
+        updateTransaction(TransactionType.WITHDRAWAL, TransactionStatus.ERROR, money, account.customer);
         System.out.println("잔액이 부족합니다");
       }
     }
@@ -53,7 +54,7 @@ public class Account {
     if (account != null) {
       account.balance += money;
       setLastTransactionDate(account.customer.customerNumber);
-      updateTransaction(TransactionType.DEPOSIT, money, account.customer);
+      updateTransaction(TransactionType.DEPOSIT, TransactionStatus.NORMAL, money, account.customer);
       return account.balance;
     }
 
@@ -65,7 +66,7 @@ public class Account {
   public static long balanceInquiry(Account account, String password) {
     if (account != null) {
       setLastTransactionDate(account.customer.customerNumber);
-      updateTransaction(TransactionType.INQUIRY, 0, account.customer);
+      updateTransaction(TransactionType.INQUIRY, TransactionStatus.NORMAL, 0, account.customer);
       return account.balance;
     }
 
@@ -81,7 +82,7 @@ public class Account {
       account.accountColoseDate = LocalDate.now();
       account.isDormantt = true;
       setLastTransactionDate(account.customer.customerNumber);
-      updateTransaction(TransactionType.DELETE, 0, account.customer);
+      updateTransaction(TransactionType.DELETE, TransactionStatus.NORMAL, 0, account.customer);
     }
   }
 
@@ -107,9 +108,9 @@ public class Account {
     Customer.setLastTransactionDate(customerNumber);
   }
 
-  public static void updateTransaction(TransactionType type, long money, Customer customer) {
+  public static void updateTransaction(TransactionType type, TransactionStatus status, long money, Customer customer) {
     Banker banker = new Banker(BankCode.HANA, "123456", "뱅커");
-    Transaction transaction = new Transaction(type, TransactionStatus.NORMAL, money, customer, banker);
+    Transaction transaction = new Transaction(type, status, money, customer, banker);
     Transaction.update(transaction);
   }
 
