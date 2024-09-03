@@ -95,6 +95,9 @@ public class BankDemo {
 
     Account.accountMap.put(account.accountNumber, account);
     System.out.println(Account.accountMap.get(account.accountNumber).toString());
+
+    // 내역 업데이트
+    Account.updateTransaction(TransactionType.CREATE, 0, account.customer);
   }
 
 
