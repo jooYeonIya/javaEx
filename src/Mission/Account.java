@@ -8,23 +8,17 @@ public class Account {
   // 계좌: 계좌 번호 + 계좌 객체
   public Map<String, Account> accountMap = new HashMap<>();
 
-  BankCode bankCode;				// 은행코드
-  String accountNumber;			// 계좌번호 5자
-  String customerNumber;			// 고객번호 주민번호 앞자리 6자
+  Customer customer;
+  String accountNumber;			    // 계좌번호 5자
   LocalDate accountOpenDate;		// 계좌 개설 일자
   LocalDate accountColoseDate;	// 계좌 삭제 일자
-  Boolean isDormantt;   			// 휴면 계좌 여부
-  String password;     			// 비밀번호
-  long balance;        			// 잔고
+  Boolean isDormantt;   			  // 휴면 계좌 여부
+  String password;     			    // 비밀번호
+  long balance;        			    // 잔고
 
   // 계좌 생성
-  public Account(BankCode bankCode,
-                 int accountCounter,
-                 String customerNumber,
-                 String password) {
-    this.bankCode = bankCode;
+  public Account(Customer customer, String password, int accountCounter) {
     this.accountNumber = String.format("%05d", accountCounter);
-    this.customerNumber = customerNumber;
     this.accountOpenDate = LocalDate.now();
     this.accountColoseDate = null;
     this.isDormantt = false;
@@ -83,7 +77,7 @@ public class Account {
     Account account = accountMap.get(accountNumber);
 
     if (account != null) {
-      if (account.customerNumber.equals(customerNumber) && account.password.equals(password)) {
+      if (account.customer.customerNumber.equals(customerNumber) && account.password.equals(password)) {
       } else {
         System.out.println("고객 번호 및 비밀호가 일치하지 않습니다.");
       }
