@@ -1,5 +1,9 @@
 package Mission;
 
+import Mission.Enum.BankCode;
+import Mission.Enum.TransactionStatus;
+import Mission.Enum.TransactionType;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +37,7 @@ public class Account {
       if (account.balance >= money) {
         account.balance -= money;
         setLastTransactionDate(account.customer.customerNumber);
-        updateTransaction(TransactionType.WITHDRAWAL, (long) money, account.customer);
+        updateTransaction(TransactionType.WITHDRAWAL, money, account.customer);
         return account.balance;
       } else {
         System.out.println("잔액이 부족합니다");
@@ -46,11 +50,10 @@ public class Account {
   // 입금
   // 해당 은행에 계좌가 있고, 계좌번호와 고객번호가 일치하면 입금을 할 수 있다.
   public static long deposit(Account account, long money)  {
-
     if (account != null) {
       account.balance += money;
       setLastTransactionDate(account.customer.customerNumber);
-      updateTransaction(TransactionType.DEPOSIT, (long) money, account.customer);
+      updateTransaction(TransactionType.DEPOSIT, money, account.customer);
       return account.balance;
     }
 
@@ -85,6 +88,7 @@ public class Account {
 
     if (account != null) {
       if (account.password.equals(password)) {
+        return account;
       } else {
         System.out.println("비밀호가 일치하지 않습니다.");
       }
@@ -92,7 +96,7 @@ public class Account {
       System.out.println("계좌가 없습니다");
     }
 
-    return account;
+    return null;
   }
 
   public static void setLastTransactionDate(String customerNumber) {

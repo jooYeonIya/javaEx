@@ -1,9 +1,8 @@
 package Mission;
 
-import ObjectPackage.Person;
+import Mission.Enum.BankCode;
+import Mission.Enum.TransactionType;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class BankDemo {
@@ -127,7 +126,7 @@ public class BankDemo {
 
     // 계좌 정보 업데이트
     Account account = Account.accountInquiry(accountNumber, password);
-    long withdraw = Account.withdraw(account, (long) money);
+    long withdraw = Account.withdraw(account, money);
 
     System.out.println("출금 후 잔액" + withdraw + "원");
   }
