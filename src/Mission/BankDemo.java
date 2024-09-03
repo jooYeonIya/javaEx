@@ -67,18 +67,6 @@ public class BankDemo {
     System.out.println(Account.accountMap.get(account.accountNumber).toString());
   }
 
-  public static void setLastTransactionDate(String customerNumber) {
-    Customer customer = Customer.customerMap.get(customerNumber);
-    Customer.setLastTransactionDate(customerNumber);
-    System.out.println(Customer.customerMap.get(customerNumber).toString());
-  }
-
-  public static void updateTransaction(TransactionType type, long money, Customer customer) {
-    Banker banker = new Banker(BankCode.HANA, "123456", "뱅커");
-    Transaction transaction = new Transaction(type, TransactionStatus.NORMAL, money, customer, banker);
-    Transaction.transactionMap.put(transaction.seqNo, transaction);
-    System.out.println(Transaction.transactionMap.get(transaction.seqNo).toString());
-  }
 
   public static void deposit() {
     System.out.println("계좌 번호 입력");
@@ -91,14 +79,8 @@ public class BankDemo {
     int money = in.nextInt();
 
     // 계좌 정보 업데이트
-    Account account = Account.accountMap.get(accountNumber);
-    long deposit = Account.deposit(accountNumber, account.customer.customerNumber, password, (long) money);
-
-    // 고객 정보 업데이트
-    setLastTransactionDate(account.customer.customerNumber);
-
-    // 입출금 거래 내역 업데이트
-    updateTransaction(TransactionType.DEPOSIT, (long) money, account.customer);
+    Account account = Account.accountInquiry(accountNumber, password);
+    long deposit = Account.deposit(account, (long) money);
 
     System.out.println("입금 후 잔액" + deposit + "원");
   }
@@ -114,14 +96,8 @@ public class BankDemo {
     int money = in.nextInt();
 
     // 계좌 정보 업데이트
-    Account account = Account.accountMap.get(accountNumber);
-    long withdraw = Account.withdraw(accountNumber, account.customer.customerNumber, password, (long) money);
-
-    // 고객 정보 업데이트
-    setLastTransactionDate(account.customer.customerNumber);
-
-    // 입출금 거래 내역 업데이트
-    updateTransaction(TransactionType.WITHDRAWAL, (long) money, account.customer);
+    Account account = Account.accountInquiry(accountNumber, password);
+    long withdraw = Account.withdraw(account, (long) money);
 
     System.out.println("출금 후 잔액" + withdraw + "원");
   }
@@ -134,14 +110,8 @@ public class BankDemo {
     String password = in.nextLine();
 
     // 계좌 정보 업데이트
-    Account account = Account.accountMap.get(accountNumber);
-    long balance = Account.balanceInquiry(accountNumber, account.customer.customerNumber, password);
-
-    // 고객 정보 업데이트
-    setLastTransactionDate(account.customer.customerNumber);
-
-    // 입출금 거래 내역 업데이트
-    updateTransaction(TransactionType.INQUIRY, 0, account.customer);
+    Account account = Account.accountInquiry(accountNumber, password);
+    long balance = Account.balanceInquiry(accountNumber, password);
 
     System.out.println("잔액 " + balance);
   }
@@ -154,10 +124,7 @@ public class BankDemo {
     String password = in.nextLine();
 
     // 계좌 정보 업데이트
-    Account account = Account.accountMap.get(accountNumber);
-    Account.deleteAccount(accountNumber, account.customer.customerNumber, password);
-
-    // 입출금 거래 내역 업데이트
-    updateTransaction(TransactionType.DELETE, 0, account.customer);
+    Account account = Account.accountInquiry(accountNumber, password);
+    Account.deleteAccount(account);
   }
 }
