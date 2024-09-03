@@ -11,7 +11,7 @@ public class BankDemo {
   static Scanner in = new Scanner(System.in);
 
   public static void main(String[] args) {
-    while (true) {
+    out: while (true) {
       System.out.println("1 계좌 생성 / 2 입금 / 3 출금 / 4 잔액 조회 / 5 계좌 생성 / 6 종료");
 
       int option = in.nextInt();
@@ -33,7 +33,8 @@ public class BankDemo {
         case 5:
           deleteAccount();
           break;
-
+        default:
+          break out;
       }
     }
   }
