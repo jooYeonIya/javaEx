@@ -33,8 +33,11 @@ public class BankDemo {
         case 5:
           deleteAccount();
           break;
-        default:
+        case 6:
           break out;
+        default:
+          System.out.println("1번부터 6번까지 입력해 주세요");
+          break;
       }
     }
   }
