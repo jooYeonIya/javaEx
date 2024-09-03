@@ -62,11 +62,14 @@ public class Account {
 
   // 잔액 조회
   // 해당 은행에 계좌가 있고, 계좌번호와 고객번호, 비밀번호가 일치하면 잔액을 조회할 수 있다.
-  public static long balanceInquiry(String accountNumber, String password) {
-    Account account = accountInquiry(accountNumber, password);
-    setLastTransactionDate(account.customer.customerNumber);
-    updateTransaction(TransactionType.INQUIRY, 0, account.customer);
-    return account.balance;
+  public static long balanceInquiry(Account account, String password) {
+    if (account != null) {
+      setLastTransactionDate(account.customer.customerNumber);
+      updateTransaction(TransactionType.INQUIRY, 0, account.customer);
+      return account.balance;
+    }
+
+    return 0;
   }
 
   // 계좌 삭제

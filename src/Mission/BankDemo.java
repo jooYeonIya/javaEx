@@ -140,7 +140,7 @@ public class BankDemo {
 
     // 계좌 정보 업데이트
     Account account = Account.accountInquiry(accountNumber, password);
-    long balance = Account.balanceInquiry(accountNumber, password);
+    long balance = Account.balanceInquiry(account, password);
 
     System.out.println("잔액 " + balance);
   }
