@@ -45,7 +45,7 @@ public class Account {
       }
     }
 
-    return 0;
+    return -1;
   }
 
   // 입금

@@ -133,7 +133,7 @@ public class BankDemo {
     Account account = Account.accountInquiry(accountNumber, password);
     long withdraw = Account.withdraw(account, money);
 
-    String message = (account == null) ? " " : "출금 후 잔액" + withdraw + "원";
+    String message = (account == null) || (withdraw == -1) ? " " : "출금 후 잔액" + withdraw + "원";
     System.out.println(message);
   }
 
