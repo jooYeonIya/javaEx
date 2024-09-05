@@ -14,7 +14,7 @@ public class DBDemo1 {
     // 데이터 은닉
     PreparedStatement ps = conn.prepareStatement(sql);
     ps.setString(1, "kim");
-    ps.setString(2, "010-0000-0000");
+    ps.setString(2, "010-1111-0000");
     ps.setString(3, "kim@a.com");
 
     int i = ps.executeUpdate();
@@ -32,7 +32,7 @@ public class DBDemo1 {
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
       System.out.println("데이터베이스 연결중");
-      conn = DriverManager.getConnection(url, "root", "1234");
+      conn = DriverManager.getConnection(url, "root", "1111");
       System.out.println("데이터베이스 연결 성공");
     } catch (ClassNotFoundException e) {
       System.out.println("드라이버 검색 오류 ");

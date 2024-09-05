@@ -34,7 +34,7 @@ public class DBMission {
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
       System.out.println("데이터베이스 연결중");
-      conn = DriverManager.getConnection(url, "root", "1234");
+      conn = DriverManager.getConnection(url, "root", "1111");
       System.out.println("데이터베이스 연결 성공");
     } catch (ClassNotFoundException e) {
       System.out.println("드라이버 검색 오류 ");
